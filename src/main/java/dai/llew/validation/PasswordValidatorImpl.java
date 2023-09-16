@@ -7,7 +7,14 @@ import java.util.regex.Pattern;
  */
 public class PasswordValidatorImpl implements PasswordValidator {
 
-	private static final String PASSWORD_REGEX = "\\A(?=.*[A-Z]+).{3}\\Z";
+	/**
+	 * Valid passwords require:
+	 * 1 or more uppercase chars
+	 * 1 or more lowercase chars
+	 * 1 or more digits
+	 * 1 or more underscore chars.
+	 */
+	private static final String PASSWORD_REGEX = "\\A(?=.*[A-Z]+)(?=.*[a-z]+)(?=.*[0-9]+)(?=.*_+).{8,}\\Z";
 	private static final Pattern REGEX = Pattern.compile(PASSWORD_REGEX);
 
 	@Override
